@@ -1,7 +1,6 @@
 package test
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
@@ -29,6 +28,4 @@ func TestYamlCheck(t *testing.T) {
 	// map that we may type cast later
 	err := yaml.Unmarshal([]byte(rendered), &m)
 	require.NoError(t, err)
-
-	fmt.Printf("--- m:\n%v\n\n", m)
 }
