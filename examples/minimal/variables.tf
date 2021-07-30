@@ -25,6 +25,11 @@ variable "vpc_id" {
   description = "VPC ID of deployment"
 }
 
+variable "emr_ubnet_id" {
+  type        = string
+  description = "Subnet ID for ElasticSearch domain, Tamr VM, EMR cluster"
+}
+
 variable "ec2_subnet_id" {
   type        = string
   description = "Subnet ID for ElasticSearch domain, Tamr VM, EMR cluster"
