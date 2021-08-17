@@ -37,7 +37,3 @@ data "aws_subnet" "application_subnet" {
 data "aws_subnet" "data_subnet_0" {
   id = var.data_subnet_ids[0]
 }
-
-data "aws_subnet" "data_subnet_1" {
-  id = var.data_subnet_ids[1]
-}
