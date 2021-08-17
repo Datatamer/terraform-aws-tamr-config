@@ -12,7 +12,7 @@ module "emr" {
   bucket_path_to_logs   = "logs/${var.name_prefix}-cluster/"
 
   # Networking
-  subnet_id  = var.ec2_subnet_id
+  subnet_id  = var.emr_subnet_id
   vpc_id     = var.vpc_id
   tamr_cidrs = var.ingress_cidr_blocks
   tamr_sgs = [
