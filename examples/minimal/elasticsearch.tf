@@ -14,7 +14,7 @@ module "tamr-es-cluster" {
 
   # Networking
   vpc_id     = var.vpc_id
-  subnet_ids = [var.ec2_subnet_id]
+  subnet_ids = data.aws_subnet.application_subnet.availability_zone == data.aws_subnet.data_subnet_0.availability_zone ? [var.data_subnet_ids[0]] : [var.data_subnet_ids[1]]
   security_group_ids = [
     // Spark
     module.emr.emr_service_access_sg_id,
@@ -27,4 +27,17 @@ module "tamr-es-cluster" {
   ]
   # CIDR blocks to allow ingress from (i.e. VPN)
   ingress_cidr_blocks = var.ingress_cidr_blocks
+}
+
+# To avoid cross-az traffic we place the ES cluster in the same AZ as the application subnet
+data "aws_subnet" "application_subnet" {
+  id = var.ec2_subnet_id
+}
+
+data "aws_subnet" "data_subnet_0" {
+  id = var.data_subnet_ids[0]
+}
+
+data "aws_subnet" "data_subnet_1" {
+  id = var.data_subnet_ids[1]
 }
