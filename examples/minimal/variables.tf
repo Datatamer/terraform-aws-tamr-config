@@ -10,11 +10,6 @@ variable "ingress_cidr_blocks" {
   default     = []
 }
 
-variable "ami_id" {
-  type        = string
-  description = "AMI to use for Tamr EC2 instance"
-}
-
 variable "license_key" {
   type        = string
   description = "Tamr license key"
@@ -25,17 +20,17 @@ variable "vpc_id" {
   description = "VPC ID of deployment"
 }
 
-variable "emr_ubnet_id" {
+variable "emr_subnet_id" {
   type        = string
-  description = "Subnet ID for ElasticSearch domain, Tamr VM, EMR cluster"
+  description = "Subnet ID for EMR cluster"
 }
 
 variable "ec2_subnet_id" {
   type        = string
-  description = "Subnet ID for ElasticSearch domain, Tamr VM, EMR cluster"
+  description = "Subnet ID for Tamr VM"
 }
 
-variable "rds_subnet_group_ids" {
+variable "data_subnet_ids" {
   type        = list(string)
   description = "List of at least 2 subnet IDs in different AZs"
 }
