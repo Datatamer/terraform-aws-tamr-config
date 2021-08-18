@@ -14,7 +14,7 @@ module "tamr-es-cluster" {
 
   # Networking
   vpc_id     = var.vpc_id
-  subnet_ids = data.aws_subnet.application_subnet.availability_zone == data.aws_subnet.data_subnet_0.availability_zone ? [var.data_subnet_ids[0]] : [var.data_subnet_ids[1]]
+  subnet_ids = [data.aws_subnet.data_subnet_es.id]
   security_group_ids = [
     // Spark
     module.emr.emr_service_access_sg_id,
@@ -33,7 +33,13 @@ module "tamr-es-cluster" {
 data "aws_subnet" "application_subnet" {
   id = var.ec2_subnet_id
 }
-
-data "aws_subnet" "data_subnet_0" {
-  id = var.data_subnet_ids[0]
+data "aws_subnet" "data_subnet_es" {
+   filter {
+     name = "availability-zone"
+     values = [data.aws_subnet.application_subnet.availability_zone]
+   }
+   filter {
+     name = "subnet-id"
+     values = var.data_subnet_ids
+   }
 }
