@@ -9,7 +9,7 @@ module "emr" {
   create_static_cluster = true
   release_label         = "emr-5.29.0" # spark 2.4.4, hbase 1.4.10
   applications          = local.applications
-  emr_config_file_path  = "./emr.json"
+  emr_config_file_path  = "${path.module}/emr.json"
   bucket_path_to_logs   = "logs/${var.name_prefix}-cluster/"
   tags                  = merge(var.tags, var.emr_tags)
   abac_valid_tags       = var.emr_abac_valid_tags

@@ -1,3 +1,4 @@
 output "tamr-config" {
-  value = module.tamr-config.rendered
+  value = module.examples_minimal.tamr-config # .rendered
+  sensitive = true
 }

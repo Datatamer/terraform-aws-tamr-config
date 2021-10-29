@@ -1,6 +1,6 @@
-module "examples_minimal" {
+module "examples_ephemeral_spark" {
   #   source = "git::git@github.com:Datatamer/terraform-aws-tamr-config?ref=2.0.0"
-  source = "../../examples/minimal"
+  source = "../../examples/ephemeral-spark"
 
   name_prefix = var.name_prefix
   ingress_cidr_blocks = var.ingress_cidr_blocks
@@ -20,10 +20,10 @@ module "vpc" {
   source = "git::https://github.com/Datatamer/terraform-aws-networking.git?ref=0.1.0"
   
   ingress_cidr_blocks           = var.ingress_cidr_blocks
-  vpc_cidr_block                = "172.31.0.0/20"
-  data_subnet_cidr_blocks       = ["172.31.2.0/24", "172.31.3.0/24"]
-  application_subnet_cidr_block = "172.31.4.0/24"
-  compute_subnet_cidr_block     = "172.31.5.0/24"
+  vpc_cidr_block                = "172.40.0.0/20"
+  data_subnet_cidr_blocks       = ["172.40.2.0/24", "172.40.3.0/24"]
+  application_subnet_cidr_block = "172.40.4.0/24"
+  compute_subnet_cidr_block     = "172.40.5.0/24"
   availability_zones            = [for i in ["a", "b"] : "${data.aws_region.current.name}${i}"]
   create_public_subnets         = false
   create_load_balancing_subnets = false
