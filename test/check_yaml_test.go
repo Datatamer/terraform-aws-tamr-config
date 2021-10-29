@@ -12,7 +12,7 @@ import (
 func TestYamlCheck(t *testing.T) {
 
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
-		TerraformDir: "../test_examples/minimal",
+		TerraformDir: "../test_examples/root_module",
 	})
 
 	defer terraform.Destroy(t, terraformOptions)
