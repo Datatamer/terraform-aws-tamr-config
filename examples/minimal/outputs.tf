@@ -29,6 +29,6 @@ output "emr" {
 }
 
 output "tamr-config" {
-  value = module.tamr-config.rendered
+  value     = module.tamr-config.rendered
   sensitive = true
 }

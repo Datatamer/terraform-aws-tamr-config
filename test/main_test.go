@@ -80,7 +80,7 @@ func TestAllCases(t *testing.T) {
 			test_structure.RunTestStage(t, "pick_new_randoms", func() {
 
 				usRegions := []string{"us-east-1", "us-east-2", "us-west-1", "us-west-2"}
-				// This function will first check for the Env Var TERRATEST_REGION and return its value if != ""
+				// This function will first check for the Env Var TERRATEST_REGION and return its value if it is set.
 				awsRegion := aws.GetRandomStableRegion(t, usRegions, nil)
 
 				test_structure.SaveString(t, tempTestFolder, "region", awsRegion)
@@ -112,7 +112,15 @@ func TestAllCases(t *testing.T) {
 
 			test_structure.RunTestStage(t, "create", func() {
 				terraformOptions := test_structure.LoadTerraformOptions(t, tempTestFolder)
-				terraform.InitAndApply(t, terraformOptions)
+
+				_, err := terraform.InitAndApplyE(t, terraformOptions)
+
+				if testCase.expectApplyError {
+					require.Error(t, err)
+					// If it failed as expected, we should skip the rest (validate function).
+					t.SkipNow()
+				}
+
 			})
 
 			test_structure.RunTestStage(t, "validate", func() {
@@ -124,13 +132,13 @@ func TestAllCases(t *testing.T) {
 					require.NotNil(t, rendered)
 				})
 
-				t.Run("validate_unmarshall_to_yaml", func(t *testing.T) {
+				t.Run("validate_unmarshal_to_yaml", func(t *testing.T) {
 					// allocates a new map so that we can pass its address to the `yaml.Unmarshal` function
-					m := make(map[interface{}]interface{})
+					configMap := make(map[interface{}]interface{})
 
 					// converts the string rendered to a list of bytes and assigns decoded values to `m` as a
-					// map that we may type cast later
-					err := yaml.Unmarshal([]byte(rendered), &m)
+					// map that we could type cast later
+					err := yaml.Unmarshal([]byte(rendered), &configMap)
 					assert.NoError(t, err)
 				})
 			})
