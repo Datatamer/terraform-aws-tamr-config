@@ -33,5 +33,6 @@ func TestYamlCheck(t *testing.T) {
 		// map that we may type cast later
 		err := yaml.Unmarshal([]byte(rendered), &m)
 		assert.NoError(t, err)
+		// remove this comment later
 	})
 }
