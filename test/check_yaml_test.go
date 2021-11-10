@@ -35,5 +35,6 @@ func TestYamlCheck(t *testing.T) {
 		assert.NoError(t, err)
 		// remove this comment later, adding label - test
 		// test with go clean --modcache
+		// removed env.GIT_URL.contains("terraform-aws")
 	})
 }
