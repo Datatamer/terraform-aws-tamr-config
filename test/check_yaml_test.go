@@ -34,5 +34,6 @@ func TestYamlCheck(t *testing.T) {
 		err := yaml.Unmarshal([]byte(rendered), &m)
 		assert.NoError(t, err)
 		// remove this comment later, adding label - test
+		// test with go clean --modcache
 	})
 }
