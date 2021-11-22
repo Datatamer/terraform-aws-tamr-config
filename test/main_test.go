@@ -136,8 +136,8 @@ func TestAllCases(t *testing.T) {
 					// allocates a new map so that we can pass its address to the `yaml.Unmarshal` function
 					configMap := make(map[interface{}]interface{})
 
-					// converts the string rendered to a list of bytes and assigns decoded values to `m` as a
-					// map that we could type cast later
+					// converts the string rendered to a list of bytes and assigns decoded values to `configMap` as a
+					// map that we could type cast later (if needed)
 					err := yaml.Unmarshal([]byte(rendered), &configMap)
 					assert.NoError(t, err)
 				})
