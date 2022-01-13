@@ -10,8 +10,8 @@ module "tamr-config" {
   }
 
   rds_pg_hostname = "${var.name_prefix}_rds_pg_hostname" // module.rds-postgres.rds_hostname
-  rds_pg_dbname   = "rds_pg_dbname"   // module.rds-postgres.rds_dbname
-  rds_pg_username = "rds_pg_username" // module.rds-postgres.rds_username
+  rds_pg_dbname   = "rds_pg_dbname"                      // module.rds-postgres.rds_dbname
+  rds_pg_username = "rds_pg_username"                    // module.rds-postgres.rds_username
   rds_pg_password = random_password.rds-password.result
   rds_pg_db_port  = 123 // module.rds-postgres.rds_db_port
 
@@ -19,8 +19,8 @@ module "tamr-config" {
   tamr_data_bucket  = "tamr_data_bucket"  // module.s3-data.bucket_name
   hbase_config_path = "hbase_config_path" // module.emr.hbase_config_path
 
-  spark_emr_cluster_id           = "${var.name_prefix}_spark_emr_cluster_id"  // module.emr.tamr_emr_cluster_id
-  spark_cluster_log_uri          = "spark_cluster_log_uri" // module.emr.log_uri
+  spark_emr_cluster_id           = "${var.name_prefix}_spark_emr_cluster_id" // module.emr.tamr_emr_cluster_id
+  spark_cluster_log_uri          = "spark_cluster_log_uri"                   // module.emr.log_uri
   tamr_data_path                 = "tamr/unify-data"
   tamr_spark_config_override     = "[{'name' : 'sparkOverride1','executorInstances' : '2','sparkProps' : {'spark.cores.max' : '4'}},{'name' : 'sparkOverride2','driverMemory' : '4G','executorMemory' : '5G'}]"
   tamr_spark_properties_override = "{'spark.driver.maxResultSize':'4g'}"
