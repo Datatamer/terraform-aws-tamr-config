@@ -19,7 +19,6 @@ func initTestCases() []ConfigTestCase {
 		{
 			testName:         "TestMinimal",
 			tfDir:            "test_examples/minimal",
-			tempDir:          "",
 			expectApplyError: false,
 			vars: map[string]interface{}{
 				"name_prefix":         "",
@@ -34,7 +33,6 @@ func initTestCases() []ConfigTestCase {
 		{
 			testName:         "TestEphemeralSpark",
 			tfDir:            "test_examples/ephemeral-spark",
-			tempDir:          "",
 			expectApplyError: false,
 			vars: map[string]interface{}{
 				"name_prefix":         "",
@@ -49,7 +47,6 @@ func initTestCases() []ConfigTestCase {
 		{
 			testName:         "TestRootModuleYaml",
 			tfDir:            "test_examples/root_module",
-			tempDir:          "",
 			expectApplyError: false,
 			vars: map[string]interface{}{
 				"name_prefix": "",
