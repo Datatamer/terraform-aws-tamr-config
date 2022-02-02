@@ -1,7 +1,7 @@
 variable "name_prefix" {
   type        = string
   description = "A prefix to add to the names of all created resources."
-  default     = "tamr-config-test"
+  default     = "tamr-config-complete-test"
 }
 
 variable "ingress_cidr_blocks" {
@@ -73,4 +73,16 @@ variable "compute_subnet_cidr_block" {
   type        = string
   description = "CIDR Block for the compute subnet"
   default     = "10.0.1.0/24"
+}
+
+variable "key_name" {
+  type        = string
+  description = "Key Name"
+  default     = ""
+}
+
+variable "create_new_service_role" {
+  default     = "false"
+  type        = bool
+  description = "Whether to create a new IAM service linked role for ES. This only needs to happen once per account. If false, linked_service_role is required"
 }

@@ -3,7 +3,7 @@ locals {
 }
 # EMR Static HBase,Spark cluster
 module "emr" {
-  source = "git@github.com:Datatamer/terraform-aws-emr.git?ref=6.1.0"
+  source = "git@github.com:Datatamer/terraform-aws-emr.git?ref=7.3.0"
 
   # Configurations
   create_static_cluster = true
@@ -28,7 +28,9 @@ module "emr" {
     module.s3-logs.rw_policy_arn,
     module.s3-data.rw_policy_arn
   ]
-  key_pair_name = module.emr_key_pair.key_pair_key_name
+  #key_pair_name = module.emr_key_pair.key_pair_key_name
+  key_pair_name = var.key_name
+
 
   # Names
   cluster_name                  = "${var.name_prefix}-EMR-Cluster"
@@ -52,7 +54,7 @@ module "emr" {
 }
 
 module "sg-ports-emr" {
-  source = "git::git@github.com:Datatamer/terraform-aws-emr.git//modules/aws-emr-ports?ref=6.1.0"
+  source = "git::git@github.com:Datatamer/terraform-aws-emr.git//modules/aws-emr-ports?ref=7.3.0"
 
   applications = local.applications
 }

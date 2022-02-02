@@ -5,7 +5,7 @@ resource "random_password" "rds-password" {
 }
 
 module "rds-postgres" {
-  source = "git::git@github.com:Datatamer/terraform-aws-rds-postgres.git?ref=3.0.0"
+  source = "git::git@github.com:Datatamer/terraform-aws-rds-postgres.git?ref=3.1.0"
 
   identifier_prefix = "${var.name_prefix}-"
   username          = "tamr"
@@ -24,7 +24,7 @@ module "rds-postgres" {
 }
 
 module "sg-ports-rds" {
-  source = "git::git@github.com:Datatamer/terraform-aws-rds-postgres.git//modules/rds-postgres-ports?ref=3.0.0"
+  source = "git::git@github.com:Datatamer/terraform-aws-rds-postgres.git//modules/rds-postgres-ports?ref=3.1.0"
 }
 
 module "rds-postgres-sg" {
