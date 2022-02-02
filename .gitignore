@@ -40,3 +40,6 @@ ops-makefile
 
 # Ignore rendered-config.yml
 **/rendered-config.yml
+
+# Ignore tfvars
+**/*.tfvars
