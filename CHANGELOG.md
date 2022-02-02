@@ -1,9 +1,12 @@
 # AWS Tamr Config Repo
 
+## v2.4.0 - February 3rd 2022
+* Updates examples to use new versions of modules
+
 ## v2.3.0 - October 21st 2021
 * Update to how ES config is managed
 * If `es_domain_endpoint` is set to an empty string, configuration is automatically set to use local ES
-* New variable `es_enabled` created 
+* New variable `es_enabled` created
 
 ## v2.2.0 - August 10th 2021
 * Adds variable `emr_tags` that is passed to the config `TAMR_DATASET_EMR_CLUSTER_TAGS` into the file
