@@ -5,13 +5,6 @@ module "tamr-es-cluster" {
   domain_name = "${var.name_prefix}-es"
   sg_name     = "${var.name_prefix}-es-security-group"
 
-  # Only needed once per account, set to true if first time running in account
-
-  resource "aws_iam_service_linked_role" "es" {
-    count            = var.create_new_service_role == true ? 1 : 0
-    aws_service_name = "es.amazonaws.com"
-  }
-
   # In-transit encryption options
   node_to_node_encryption_enabled = true
   enforce_https                   = true
