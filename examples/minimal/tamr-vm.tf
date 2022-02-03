@@ -11,7 +11,7 @@ module "tamr-vm" {
   aws_role_name               = "${var.name_prefix}-tamr-ec2-role"
   aws_instance_profile_name   = "${var.name_prefix}-tamrvm-instance-profile"
   aws_emr_creator_policy_name = "${var.name_prefix}-emr-creator-policy"
-  s3_policy_arns = [
+  additional_policy_arns = [
     module.s3-logs.rw_policy_arn,
     module.s3-data.rw_policy_arn
   ]
