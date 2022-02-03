@@ -36,10 +36,8 @@ module "emr" {
       args = []
     }
   ]
-  #key_pair_name = module.emr_key_pair.key_pair_key_name
-  key_pair_name = var.key_name
-
-
+ key_pair_name = module.emr_key_pair.key_pair_key_name
+ 
   # Names
   cluster_name                  = "${var.name_prefix}-EMR-Cluster"
   emr_service_role_name         = "${var.name_prefix}-service-role"
