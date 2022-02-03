@@ -54,6 +54,5 @@ No requirements.
 | rds-pw | n/a |
 | tamr-config | n/a |
 | tamr-vm | n/a |
-| vpc | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
