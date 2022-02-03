@@ -5,9 +5,6 @@ module "tamr-es-cluster" {
   domain_name = "${var.name_prefix}-es"
   sg_name     = "${var.name_prefix}-es-security-group"
 
-  # Only needed once per account, set to true if first time running in account
-  #create_new_service_role = false
-
   # In-transit encryption options
   node_to_node_encryption_enabled = true
   enforce_https                   = true
@@ -20,8 +17,6 @@ module "tamr-es-cluster" {
   ingress_cidr_blocks = var.ingress_cidr_blocks
   aws_region          = data.aws_region.current.name
 }
-
-data "aws_region" "current" {}
 
 # Security Groups
 module "sg-ports-es" {
