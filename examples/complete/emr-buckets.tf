@@ -42,3 +42,12 @@ module "s3-data" {
   ]
   read_write_paths = [""] # r/w policy permitting default rw actions on entire bucket
 }
+
+resource "aws_s3_bucket_object" "sample_bootstrap_script" {
+  depends_on = [local_file.cloudwatch-install]
+
+  bucket                 = module.s3-data.bucket_name
+  key                    = "bootstrap-actions/emr-cloudwatch-install.sh"
+  source                 = "${path.module}/files/emr-cloudwatch-install.sh"
+  server_side_encryption = "AES256"
+}

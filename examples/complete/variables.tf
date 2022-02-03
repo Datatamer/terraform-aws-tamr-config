@@ -75,10 +75,16 @@ variable "compute_subnet_cidr_block" {
   default     = "10.0.1.0/24"
 }
 
-variable "key_name" {
-  type        = string
-  description = "Key Name"
-  default     = ""
+variable "load_balancing_subnets_cidr_blocks" {
+  type        = list(string)
+  description = "CIDR Block for the load balancing subnets"
+  default     = ["10.0.4.0/24", "10.0.5.0/24"]
+}
+
+variable "public_subnets_cidr_blocks" {
+  type        = list(string)
+  description = "CIDR Block for the public subnets"
+  default     = ["10.0.6.0/24", "10.0.7.0/24"]
 }
 
 variable "create_new_service_role" {
