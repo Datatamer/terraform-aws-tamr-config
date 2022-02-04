@@ -1,7 +1,7 @@
 # AWS Tamr Config Repo
 
 ## v2.4.0 - February 3rd 2022
-* Updates complete example to integrate Clouudatch for Tamr VM and EMR Cluster
+* Updates complete example to integrate Cloudwatch for Tamr VM and EMR Cluster
 * Updates examples to use new versions of modules
 
 ## v2.3.0 - October 21st 2021
