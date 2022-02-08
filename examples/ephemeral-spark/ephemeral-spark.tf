@@ -28,6 +28,6 @@ module "ephemeral-spark-config" {
   source                         = "git::git@github.com:Datatamer/terraform-aws-emr.git//modules/aws-emr-config?ref=7.3.0"
   create_static_cluster          = false
   cluster_name                   = "" # unused
-  emr_config_file_path           = "./emr.json"
+  emr_config_file_path           = "${path.module}/emr.json"
   bucket_name_for_root_directory = module.s3-data.bucket_name
 }
