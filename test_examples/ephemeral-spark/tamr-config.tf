@@ -14,7 +14,10 @@ module "examples_ephemeral_spark" {
   compute_subnet_id     = module.vpc.compute_subnet_id
   data_subnet_ids       = module.vpc.data_subnet_ids
   application_subnet_id = module.vpc.application_subnet_id
+  
 }
+
+
 
 module "vpc" {
   source = "git::https://github.com/Datatamer/terraform-aws-networking.git?ref=0.1.0"

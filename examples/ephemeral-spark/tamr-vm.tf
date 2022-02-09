@@ -17,8 +17,7 @@ module "tamr-vm" {
 
   ami           = local.ami_id
   instance_type = "r5.2xlarge"
-  #key_name                    = module.emr_key_pair.key_pair_key_name
-  key_name                    = var.key_name
+  key_name                    = module.emr_key_pair.key_pair_key_name
   subnet_id                   = var.application_subnet_id
   vpc_id                      = var.vpc_id
   security_group_ids          = module.aws-sg-vm.security_group_ids

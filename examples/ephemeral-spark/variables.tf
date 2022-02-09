@@ -71,11 +71,6 @@ variable "emr_abac_valid_tags" {
   default     = {}
 }
 
-variable "key_name" {
-  type        = string
-  description = "Key name temporal variable"
-}
-
 variable "create_new_service_role" {
   default     = "false"
   type        = bool
