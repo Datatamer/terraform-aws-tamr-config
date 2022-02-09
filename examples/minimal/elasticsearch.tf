@@ -1,12 +1,9 @@
 module "tamr-es-cluster" {
-  source = "git::git@github.com:Datatamer/terraform-aws-es?ref=2.1.0"
+  source = "git::git@github.com:Datatamer/terraform-aws-es?ref=3.1.0"
 
   # Names
   domain_name = "${var.name_prefix}-es"
   sg_name     = "${var.name_prefix}-es-security-group"
-
-  # Only needed once per account, set to true if first time running in account
-  create_new_service_role = false
 
   # In-transit encryption options
   node_to_node_encryption_enabled = true
@@ -25,7 +22,7 @@ data "aws_region" "current" {}
 
 # Security Groups
 module "sg-ports-es" {
-  source = "git::git@github.com:Datatamer/terraform-aws-es.git//modules/es-ports?ref=2.1.0"
+  source = "git::git@github.com:Datatamer/terraform-aws-es.git//modules/es-ports?ref=3.1.0"
 }
 
 module "aws-sg-es" {
@@ -56,4 +53,10 @@ data "aws_subnet" "data_subnet_es" {
     name   = "subnet-id"
     values = toset(var.data_subnet_ids)
   }
+}
+
+# Only needed once per account, set `create_new_service_role` variable to true if first time running in account
+resource "aws_iam_service_linked_role" "es" {
+  count            = var.create_new_service_role == true ? 1 : 0
+  aws_service_name = "es.amazonaws.com"
 }

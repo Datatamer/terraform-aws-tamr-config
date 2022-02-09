@@ -1,7 +1,8 @@
 variable "name_prefix" {
   type        = string
   description = "A prefix to add to the names of all created resources."
-  default     = "tamr-config-test"
+  #default     = "tamr-config-test"
+  default = "tamr-config-ephemeral"
 }
 
 variable "path_to_spark_logs" {
@@ -68,4 +69,10 @@ variable "emr_abac_valid_tags" {
   type        = map(list(string))
   description = "Valid tags for maintaining resources when using ABAC IAM Policies with Tag Conditions. Make sure `emr_tags` contain the values specified here and that your Subnet is tagged as well"
   default     = {}
+}
+
+variable "create_new_service_role" {
+  default     = "false"
+  type        = bool
+  description = "Whether to create a new IAM service linked role for ES. This only needs to happen once per account. If false, linked_service_role is required"
 }

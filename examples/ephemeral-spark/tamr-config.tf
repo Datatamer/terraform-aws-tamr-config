@@ -1,5 +1,5 @@
 module "tamr-config" {
-  #   source = "git::git@github.com:Datatamer/terraform-aws-tamr-config?ref=2.1.0"
+  #   source = "git::git@github.com:Datatamer/terraform-aws-tamr-config?ref=2.3.0"
   source = "../.."
 
   config_template_path       = "../../tamr-config.yml"

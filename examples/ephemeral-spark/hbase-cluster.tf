@@ -3,13 +3,13 @@ locals {
 }
 # EMR Static HBase cluster
 module "emr-hbase" {
-  source = "git@github.com:Datatamer/terraform-aws-emr.git?ref=6.1.0"
+  source = "git@github.com:Datatamer/terraform-aws-emr.git?ref=7.3.0"
 
   # Configurations
   create_static_cluster = true
   release_label         = "emr-5.29.0" # hbase 1.4.10
   applications          = local.applications
-  emr_config_file_path  = "./emr.json"
+  emr_config_file_path  = "${path.module}/emr.json"
   bucket_path_to_logs   = "logs/${var.name_prefix}-hbase"
   tags                  = merge(var.tags, var.emr_tags)
   abac_valid_tags       = var.emr_abac_valid_tags
@@ -25,7 +25,7 @@ module "emr-hbase" {
   # External resource references
   bucket_name_for_root_directory = module.s3-data.bucket_name
   bucket_name_for_logs           = module.s3-logs.bucket_name
-  s3_policy_arns = [
+  additional_policy_arns = [
     module.s3-logs.rw_policy_arn,
     module.s3-data.rw_policy_arn
   ]
@@ -54,7 +54,7 @@ module "emr-hbase" {
 }
 
 module "sg-ports-emr" {
-  source = "git::git@github.com:Datatamer/terraform-aws-emr.git//modules/aws-emr-ports?ref=6.1.0"
+  source = "git::git@github.com:Datatamer/terraform-aws-emr.git//modules/aws-emr-ports?ref=7.3.0"
 
   applications = local.applications
 }

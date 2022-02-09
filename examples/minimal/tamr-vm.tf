@@ -1,5 +1,5 @@
 module "tamr-vm" {
-  source = "git::git@github.com:Datatamer/terraform-emr-tamr-vm?ref=4.1.0"
+  source = "git::git@github.com:Datatamer/terraform-emr-tamr-vm?ref=4.4.0"
 
   ami                         = var.ami_id
   instance_type               = "r5.2xlarge"
@@ -11,7 +11,7 @@ module "tamr-vm" {
   aws_role_name               = "${var.name_prefix}-tamr-ec2-role"
   aws_instance_profile_name   = "${var.name_prefix}-tamrvm-instance-profile"
   aws_emr_creator_policy_name = "${var.name_prefix}-emr-creator-policy"
-  s3_policy_arns = [
+  additional_policy_arns = [
     module.s3-logs.rw_policy_arn,
     module.s3-data.rw_policy_arn
   ]
@@ -25,7 +25,7 @@ module "tamr-vm" {
 
 
 module "aws-vm-sg-ports" {
-  source = "git::git@github.com:Datatamer/terraform-aws-tamr-vm.git//modules/aws-security-groups?ref=4.1.0"
+  source = "git::git@github.com:Datatamer/terraform-aws-tamr-vm.git//modules/aws-security-groups?ref=4.4.0"
 }
 
 module "aws-sg-vm" {
