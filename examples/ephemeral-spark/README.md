@@ -28,7 +28,6 @@ No requirements.
 | application\_subnet\_id | Subnet ID for Tamr VM | `string` | n/a | yes |
 | compute\_subnet\_id | Subnet ID for EMR cluster | `string` | n/a | yes |
 | data\_subnet\_ids | List of at least 2 subnet IDs in different AZs | `list(string)` | n/a | yes |
-| key\_name | Key name temporal variable | `string` | n/a | yes |
 | license\_key | Tamr license key | `string` | n/a | yes |
 | vpc\_id | VPC ID of deployment | `string` | n/a | yes |
 | create\_new\_service\_role | Whether to create a new IAM service linked role for ES. This only needs to happen once per account. If false, linked\_service\_role is required | `bool` | `"false"` | no |

@@ -17,7 +17,6 @@ module "examples_complete" {
   load_balancing_subnets_cidr_blocks = var.load_balancing_subnets_cidr_blocks
   public_subnets_cidr_blocks         = var.public_subnets_cidr_blocks
   create_new_service_role            = false
-  
 }
 
 data "aws_region" "current" {}

@@ -15,8 +15,8 @@ data "aws_ami" "tamr-vm" {
 module "tamr-vm" {
   source = "git::git@github.com:Datatamer/terraform-aws-tamr-vm.git?ref=4.4.0"
 
-  ami           = local.ami_id
-  instance_type = "r5.2xlarge"
+  ami                         = local.ami_id
+  instance_type               = "r5.2xlarge"
   key_name                    = module.emr_key_pair.key_pair_key_name
   subnet_id                   = var.application_subnet_id
   vpc_id                      = var.vpc_id
