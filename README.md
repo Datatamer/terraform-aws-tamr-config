@@ -1,5 +1,5 @@
 # Terraform-generated Tamr Config Module
-Tis terraform module automates populating some Tamr config variables that are generated as outputs from other AWS scale-out modules.
+This terraform module automates populating some Tamr config variables that are generated as outputs from other AWS scale-out modules.
 
 # Examples
 ## Minimal
