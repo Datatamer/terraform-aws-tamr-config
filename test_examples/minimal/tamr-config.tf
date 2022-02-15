@@ -1,15 +1,3 @@
-data "aws_region" "current" {}
-
-data "aws_ami" "tamr-vm" {
-  most_recent = true
-  owners      = ["679593333241"]
-  name_regex  = "^Ubuntu 18.04 Tamr.*"
-  filter {
-    name   = "product-code"
-    values = ["832nkbrayw00cnivlh6nbbi6p"]
-  }
-}
-
 module "examples_minimal" {
   #   source = "git::git@github.com:Datatamer/terraform-aws-tamr-config?ref=2.0.0"
   source = "../../examples/minimal"
@@ -47,14 +35,14 @@ module "vpc" {
   }
 }
 
-# data "aws_region" "current" {}
+data "aws_region" "current" {}
 
-# data "aws_ami" "tamr-vm" {
-#   most_recent = true
-#   owners      = ["679593333241"]
-#   name_regex  = "^Ubuntu 18.04 Tamr.*"
-#   filter {
-#     name   = "product-code"
-#     values = ["832nkbrayw00cnivlh6nbbi6p"]
-#   }
-# }
+data "aws_ami" "tamr-vm" {
+  most_recent = true
+  owners      = ["679593333241"]
+  name_regex  = "^Ubuntu 18.04 Tamr.*"
+  filter {
+    name   = "product-code"
+    values = ["832nkbrayw00cnivlh6nbbi6p"]
+  }
+}
