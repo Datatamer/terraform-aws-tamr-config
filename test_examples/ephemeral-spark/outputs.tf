@@ -4,5 +4,5 @@ output "tamr-config" {
 }
 
 output "go-region" {
-  value     = data.aws-region.current
+  value     = data.aws_region.current.name
 }
