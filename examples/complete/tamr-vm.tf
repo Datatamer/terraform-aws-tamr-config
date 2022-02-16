@@ -33,7 +33,7 @@ module "tamr-vm" {
   bootstrap_scripts = [
 
     # NOTE: If you would like to use local scripts, you can use terraform's file() function
-    templatefile("${path.module}/files/tamrvm-cloudwatch-install.sh", { region = "us-east-2", endpoint = module.vpc.vpce_logs_endpoint_dnsname, log_group = aws_cloudwatch_log_group.tamr_log_group.name }),
+    templatefile("${path.module}/files/tamrvm-cloudwatch-install.sh", { region = data.aws_region.current.name, endpoint = module.vpc.vpce_logs_endpoint_dnsname, log_group = aws_cloudwatch_log_group.tamr_log_group.name }),
   ]
   tamr_emr_cluster_ids = [module.emr.tamr_emr_cluster_id]
   tamr_emr_role_arns = [

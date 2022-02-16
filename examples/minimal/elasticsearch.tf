@@ -15,7 +15,7 @@ module "tamr-es-cluster" {
   security_group_ids = module.aws-sg-es.security_group_ids
   # CIDR blocks to allow ingress from (i.e. VPN)
   ingress_cidr_blocks = var.ingress_cidr_blocks
-  aws_region          = "us-east-2"
+  aws_region          = data.aws_region.current.name
 }
 
 data "aws_region" "current" {}

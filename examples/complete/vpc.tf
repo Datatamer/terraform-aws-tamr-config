@@ -7,7 +7,7 @@ data "aws_availability_zones" "available" {
 }
 
 # Get current Region
-#data "aws_region" "current" {}
+data "aws_region" "current" {}
 
 module "vpc" {
   source             = "git::https://github.com/Datatamer/terraform-aws-networking.git?ref=1.1.1"

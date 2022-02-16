@@ -24,7 +24,7 @@ module "vpc" {
   data_subnet_cidr_blocks       = ["172.40.2.0/24", "172.40.3.0/24"]
   application_subnet_cidr_block = "172.40.4.0/24"
   compute_subnet_cidr_block     = "172.40.5.0/24"
-  availability_zones            = [for i in ["a", "b"] : ""us-east-2"${i}"]
+  availability_zones            = [for i in ["a", "b"] : "${data.aws_region.current.name}${i}"]
   create_public_subnets         = false
   create_load_balancing_subnets = false
   enable_nat_gateway            = false
@@ -36,3 +36,4 @@ module "vpc" {
 }
 
 data "aws_region" "current" {}
+
