@@ -19,4 +19,4 @@ module "examples_complete" {
   create_new_service_role            = false
 }
 
-data "aws_region" "current" {}
+#data "aws_region" "current" {}
