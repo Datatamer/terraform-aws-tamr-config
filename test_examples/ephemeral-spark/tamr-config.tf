@@ -34,3 +34,5 @@ module "vpc" {
     "Terraform" : "true"
   }
 }
+
+data "aws_region" "current" {}
