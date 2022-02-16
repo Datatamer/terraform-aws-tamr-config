@@ -1,7 +1,21 @@
+locals {
+  ami_id = var.ami_id != "" ? var.ami_id : data.aws_ami.tamr-vm.id
+}
+
+data "aws_ami" "tamr-vm" {
+  most_recent = true
+  owners      = ["679593333241"]
+  name_regex  = "^Ubuntu 18.04 Tamr.*"
+  filter {
+    name   = "product-code"
+    values = ["832nkbrayw00cnivlh6nbbi6p"]
+  }
+}
+
 module "tamr-vm" {
   source = "git::git@github.com:Datatamer/terraform-emr-tamr-vm?ref=4.4.0"
 
-  ami                         = var.ami_id
+  ami                         = local.ami_id
   instance_type               = "r5.2xlarge"
   key_name                    = module.emr_key_pair.key_pair_key_name
   subnet_id                   = var.application_subnet_id
