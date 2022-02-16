@@ -6,7 +6,7 @@ module "examples_ephemeral_spark" {
   ingress_cidr_blocks   = var.ingress_cidr_blocks
   egress_cidr_blocks    = var.egress_cidr_blocks
   license_key           = var.license_key
-  ami_id                = data.aws_ami.tamr-vm.id # var.ami_id
+  ami_id                = var.ami_id
   vpc_id                = module.vpc.vpc_id       # var.vpc_id
   tags                  = var.tags
   emr_tags              = var.emr_tags
