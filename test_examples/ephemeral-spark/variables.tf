@@ -41,5 +41,5 @@ variable "emr_abac_valid_tags" {
 variable "ami_id" {
   type        = string
   description = "AMI to use for Tamr EC2 instance"
-  default = ""
+  default     = ""
 }
