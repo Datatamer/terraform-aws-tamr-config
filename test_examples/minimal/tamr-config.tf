@@ -6,7 +6,7 @@ module "examples_minimal" {
   ingress_cidr_blocks   = var.ingress_cidr_blocks
   egress_cidr_blocks    = var.egress_cidr_blocks
   license_key           = var.license_key
-  ami_id                = data.aws_ami.tamr-vm.id
+  ami_id                = var.ami_id
   vpc_id                = module.vpc.vpc_id
   tags                  = var.tags
   emr_tags              = var.emr_tags
@@ -36,13 +36,3 @@ module "vpc" {
 }
 
 data "aws_region" "current" {}
-
-data "aws_ami" "tamr-vm" {
-  most_recent = true
-  owners      = ["679593333241"]
-  name_regex  = "^Ubuntu 18.04 Tamr.*"
-  filter {
-    name   = "product-code"
-    values = ["832nkbrayw00cnivlh6nbbi6p"]
-  }
-}

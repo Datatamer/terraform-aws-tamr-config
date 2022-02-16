@@ -37,3 +37,9 @@ variable "emr_abac_valid_tags" {
   description = "Valid tags for maintaining resources when using ABAC IAM Policies with Tag Conditions. Make sure `emr_tags` contain the values specified here and that your Subnet is tagged as well"
   default     = {}
 }
+
+variable "ami_id" {
+  type        = string
+  description = "AMI to use for Tamr EC2 instance"
+  default = ""
+}
