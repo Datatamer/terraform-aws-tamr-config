@@ -18,5 +18,3 @@ module "examples_complete" {
   public_subnets_cidr_blocks         = var.public_subnets_cidr_blocks
   create_new_service_role            = false
 }
-
-data "aws_region" "current" {}
