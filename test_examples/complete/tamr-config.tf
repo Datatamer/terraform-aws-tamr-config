@@ -7,7 +7,7 @@ module "examples_complete" {
   egress_cidr_blocks                 = var.egress_cidr_blocks
   license_key                        = var.license_key
   ami_id                             = var.ami_id
-  vpc_cidr_block                     = var.vpc_cidr_block      # var.vpc_id
+  vpc_cidr_block                     = var.vpc_cidr_block # var.vpc_id
   tags                               = var.tags
   emr_tags                           = var.emr_tags
   emr_abac_valid_tags                = var.emr_abac_valid_tags

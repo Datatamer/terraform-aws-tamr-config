@@ -7,7 +7,7 @@ module "examples_ephemeral_spark" {
   egress_cidr_blocks    = var.egress_cidr_blocks
   license_key           = var.license_key
   ami_id                = var.ami_id
-  vpc_id                = module.vpc.vpc_id       # var.vpc_id
+  vpc_id                = module.vpc.vpc_id # var.vpc_id
   tags                  = var.tags
   emr_tags              = var.emr_tags
   emr_abac_valid_tags   = var.emr_abac_valid_tags
@@ -37,3 +37,12 @@ module "vpc" {
 
 data "aws_region" "current" {}
 
+data "aws_ami" "tamr-vm" {
+  most_recent = true
+  owners      = ["679593333241"]
+  name_regex  = "^Ubuntu 18.04 Tamr.*"
+  filter {
+    name   = "product-code"
+    values = ["832nkbrayw00cnivlh6nbbi6p"]
+  }
+}

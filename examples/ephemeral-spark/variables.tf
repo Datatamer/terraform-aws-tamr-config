@@ -1,7 +1,7 @@
 variable "name_prefix" {
   type        = string
   description = "A prefix to add to the names of all created resources."
-  default = "tamr-config-ephemeral"
+  default     = "tamr-config-ephemeral"
 }
 
 variable "path_to_spark_logs" {

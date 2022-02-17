@@ -4,16 +4,19 @@ locals {
 
 data "aws_ami" "tamr-vm" {
   most_recent = true
-  owners      = ["679593333241"]
-  name_regex  = "^Ubuntu 18.04 Tamr.*"
+  #owners      = ["679593333241"]
+  owners      = ["amazon"]
+  #name_regex  = "^Ubuntu 18.04 Tamr.*"
   filter {
-    name   = "product-code"
-    values = ["832nkbrayw00cnivlh6nbbi6p"]
+   # name   = "product-code"
+    #values = ["832nkbrayw00cnivlh6nbbi6p"]
+    name = "name"
+    values = ["amzn-ami-hvm-*-x86_64-gp2"]
   }
-  filter {
-    name   = "product-code.type"
-    values = ["marketplace"]
-  }
+  # filter {
+  #   name   = "product-code.type"
+  #   values = ["marketplace"]
+  # }
 }
 
 module "tamr-vm" {
