@@ -65,7 +65,7 @@ func TestAllCases(t *testing.T) {
 				awsRegion := test_structure.LoadString(t, tempTestFolder, "region")
 				uniqueID := test_structure.LoadString(t, tempTestFolder, "unique_id")
 
-				//testCase.vars["name_prefix"] = uniqueID
+				testCase.vars["name_prefix"] = uniqueID
 
 				terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 					TerraformDir: tempTestFolder,
