@@ -10,6 +10,10 @@ data "aws_ami" "tamr-vm" {
     name   = "product-code"
     values = ["832nkbrayw00cnivlh6nbbi6p"]
   }
+  filter {
+    name   = "product-code.type"
+    values = ["marketplace"]
+  }
 }
 
 module "tamr-vm" {
