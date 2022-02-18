@@ -16,20 +16,20 @@ import (
 
 func initTestCases() []ConfigTestCase {
 	return []ConfigTestCase{
-		// {
-		// 	testName:         "TestMinimal",
-		// 	tfDir:            "test_examples/minimal",
-		// 	expectApplyError: false,
-		// 	vars: map[string]interface{}{
-		// 		"name_prefix":         "",
-		// 		"ingress_cidr_blocks": []string{"0.0.0.0/0"},
-		// 		"egress_cidr_blocks":  []string{"0.0.0.0/0"},
-		// 		"license_key":         "averysecretkey",
-		// 		"tags":                make(map[string]string),
-		// 		"emr_tags":            make(map[string]string),
-		// 		"emr_abac_valid_tags": make(map[string][]string),
-		// 	},
-		// },
+		{
+			testName:         "TestMinimal",
+			tfDir:            "test_examples/minimal",
+			expectApplyError: false,
+			vars: map[string]interface{}{
+				"name_prefix":         "",
+				"ingress_cidr_blocks": []string{"0.0.0.0/0"},
+				"egress_cidr_blocks":  []string{"0.0.0.0/0"},
+				"license_key":         "averysecretkey",
+				"tags":                make(map[string]string),
+				"emr_tags":            make(map[string]string),
+				"emr_abac_valid_tags": make(map[string][]string),
+			},
+		},
 		// {
 		// 	testName:         "TestComplete",
 		// 	tfDir:            "test_examples/complete",
