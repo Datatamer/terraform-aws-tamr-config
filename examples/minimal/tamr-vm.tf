@@ -5,11 +5,11 @@ locals {
 data "aws_ami" "tamr-vm" {
   most_recent = true
   owners      = ["679593333241"]
-  name_regex  = "^Ubuntu 18.04 Tamr.*"
-  # filter {
-  #   name   = "product-code"
-  #   values = ["832nkbrayw00cnivlh6nbbi6p"]
-  # }
+  name_regex  = "ami-0747bdcabd34c712a-with-tamr-v20210100-20gb-1640221699-no-license-8892620f-9ecf-4370-b0a8-0c23b1d477d1"
+  filter {
+    name   = "product-code"
+    values = ["832nkbrayw00cnivlh6nbbi6p"]
+  }
 }
 
 module "tamr-vm" {
