@@ -1,7 +1,6 @@
 module "examples_minimal" {
   #   source = "git::git@github.com:Datatamer/terraform-aws-tamr-config?ref=2.0.0"
   source = "../../examples/minimal"
-  depends_on = [module.vpc]
 
   name_prefix           = var.name_prefix
   ingress_cidr_blocks   = var.ingress_cidr_blocks

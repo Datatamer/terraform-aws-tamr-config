@@ -16,23 +16,9 @@ import (
 
 func initTestCases() []ConfigTestCase {
 	return []ConfigTestCase{
-		{
-			testName:         "TestMinimal",
-			tfDir:            "test_examples/minimal",
-			expectApplyError: false,
-			vars: map[string]interface{}{
-				"name_prefix":         "",
-				"ingress_cidr_blocks": []string{"0.0.0.0/0"},
-				"egress_cidr_blocks":  []string{"0.0.0.0/0"},
-				"license_key":         "averysecretkey",
-				"tags":                make(map[string]string),
-				"emr_tags":            make(map[string]string),
-				"emr_abac_valid_tags": make(map[string][]string),
-			},
-		},
 		// {
-		// 	testName:         "TestComplete",
-		// 	tfDir:            "test_examples/complete",
+		// 	testName:         "TestMinimal",
+		// 	tfDir:            "test_examples/minimal",
 		// 	expectApplyError: false,
 		// 	vars: map[string]interface{}{
 		// 		"name_prefix":         "",
@@ -42,17 +28,11 @@ func initTestCases() []ConfigTestCase {
 		// 		"tags":                make(map[string]string),
 		// 		"emr_tags":            make(map[string]string),
 		// 		"emr_abac_valid_tags": make(map[string][]string),
-		// 		"vpc_cidr_block": "10.0.0.0/16",
-		// 		"data_subnet_cidr_blocks": []string{"10.0.2.0/24", "10.0.3.0/24"},
-		// 		"application_subnet_cidr_block": "10.0.0.0/24",
-		// 		"compute_subnet_cidr_block": "10.0.1.0/24",
-		// 		"load_balancing_subnets_cidr_blocks": []string{"10.0.4.0/24", "10.0.5.0/24"},
-		// 		"public_subnets_cidr_blocks":  []string{"10.0.6.0/24", "10.0.7.0/24"},
 		// 	},
 		// },
 		{
-			testName:         "TestEphemeralSpark",
-			tfDir:            "test_examples/ephemeral-spark",
+			testName:         "TestComplete",
+			tfDir:            "test_examples/complete",
 			expectApplyError: false,
 			vars: map[string]interface{}{
 				"name_prefix":         "",
@@ -62,8 +42,28 @@ func initTestCases() []ConfigTestCase {
 				"tags":                make(map[string]string),
 				"emr_tags":            make(map[string]string),
 				"emr_abac_valid_tags": make(map[string][]string),
+				"vpc_cidr_block": "10.0.0.0/16",
+				"data_subnet_cidr_blocks": []string{"10.0.2.0/24", "10.0.3.0/24"},
+				"application_subnet_cidr_block": "10.0.0.0/24",
+				"compute_subnet_cidr_block": "10.0.1.0/24",
+				"load_balancing_subnets_cidr_blocks": []string{"10.0.4.0/24", "10.0.5.0/24"},
+				"public_subnets_cidr_blocks":  []string{"10.0.6.0/24", "10.0.7.0/24"},
 			},
-		},
+		 },
+		// {
+		// 	testName:         "TestEphemeralSpark",
+		// 	tfDir:            "test_examples/ephemeral-spark",
+		// 	expectApplyError: false,
+		// 	vars: map[string]interface{}{
+		// 		"name_prefix":         "",
+		// 		"ingress_cidr_blocks": []string{"0.0.0.0/0"},
+		// 		"egress_cidr_blocks":  []string{"0.0.0.0/0"},
+		// 		"license_key":         "averysecretkey",
+		// 		"tags":                make(map[string]string),
+		// 		"emr_tags":            make(map[string]string),
+		// 		"emr_abac_valid_tags": make(map[string][]string),
+		// 	},
+		// },
 		{
 			testName:         "TestRootModuleYaml",
 			tfDir:            "test_examples/root_module",
