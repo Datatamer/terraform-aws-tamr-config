@@ -4,6 +4,7 @@ locals {
 # EMR Static HBase,Spark cluster
 module "emr" {
   source = "git@github.com:Datatamer/terraform-aws-emr.git?ref=7.3.1"
+  depends_on = [module.vpc]
 
   # Configurations
   create_static_cluster = true
