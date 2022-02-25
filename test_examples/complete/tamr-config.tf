@@ -1,7 +1,6 @@
 module "examples_complete" {
   #   source = "git::git@github.com:Datatamer/terraform-aws-tamr-config?ref=2.0.0"
-  source = "../../examples/complete"
-
+  source = "../../examples/complete" 
   name_prefix                        = var.name_prefix
   ingress_cidr_blocks                = var.ingress_cidr_blocks
   egress_cidr_blocks                 = var.egress_cidr_blocks
