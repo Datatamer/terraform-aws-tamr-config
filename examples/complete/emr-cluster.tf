@@ -4,13 +4,13 @@ locals {
 
 resource "time_sleep" "wait_600_seconds" {
   create_duration = "600s"
+  depends_on = [module.vpc]
 }
 
 # EMR Static HBase,Spark cluster
 module "emr" {
   source = "git@github.com:Datatamer/terraform-aws-emr.git?ref=7.3.1"
-  depends_on = [module.vpc,
-               time_sleep.wait_600_seconds]
+  depends_on = [resource.time_sleep.wait_600_seconds]
   
   # Configurations
   create_static_cluster = true
