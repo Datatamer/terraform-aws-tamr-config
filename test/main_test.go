@@ -31,6 +31,26 @@ func initTestCases() []ConfigTestCase {
 			},
 		},
 		{
+			testName:         "TestComplete",
+			tfDir:            "test_examples/complete",
+			expectApplyError: false,
+			vars: map[string]interface{}{
+				"name_prefix":                        "",
+				"ingress_cidr_blocks":                []string{"0.0.0.0/0"},
+				"egress_cidr_blocks":                 []string{"0.0.0.0/0"},
+				"license_key":                        "averysecretkey",
+				"tags":                               make(map[string]string),
+				"emr_tags":                           make(map[string]string),
+				"emr_abac_valid_tags":                make(map[string][]string),
+				"vpc_cidr_block":                     "10.0.0.0/16",
+				"data_subnet_cidr_blocks":            []string{"10.0.2.0/24", "10.0.3.0/24"},
+				"application_subnet_cidr_block":      "10.0.0.0/24",
+				"compute_subnet_cidr_block":          "10.0.1.0/24",
+				"load_balancing_subnets_cidr_blocks": []string{"10.0.4.0/24", "10.0.5.0/24"},
+				"public_subnets_cidr_blocks":         []string{"10.0.6.0/24", "10.0.7.0/24"},
+			},
+		},
+		{
 			testName:         "TestEphemeralSpark",
 			tfDir:            "test_examples/ephemeral-spark",
 			expectApplyError: false,
@@ -76,7 +96,7 @@ func TestAllCases(t *testing.T) {
 
 			test_structure.RunTestStage(t, "pick_new_randoms", func() {
 
-				usRegions := []string{"us-east-1", "us-east-2", "us-west-1", "us-west-2"}
+				usRegions := []string{"us-east-1", "us-east-2"}
 				// This function will first check for the Env Var TERRATEST_REGION and return its value if it is set.
 				awsRegion := aws.GetRandomStableRegion(t, usRegions, nil)
 
@@ -100,7 +120,7 @@ func TestAllCases(t *testing.T) {
 					TerraformDir: tempTestFolder,
 					Vars:         testCase.vars,
 					EnvVars: map[string]string{
-						"AWS_REGION": awsRegion,
+						"AWS_DEFAULT_REGION": awsRegion,
 					},
 				})
 
