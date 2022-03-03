@@ -76,7 +76,7 @@ func TestAllCases(t *testing.T) {
 
 			test_structure.RunTestStage(t, "pick_new_randoms", func() {
 
-				usRegions := []string{"us-east-1", "us-east-2"}
+				usRegions := []string{"us-east-1"}
 				// This function will first check for the Env Var TERRATEST_REGION and return its value if it is set.
 				awsRegion := aws.GetRandomStableRegion(t, usRegions, nil)
 
