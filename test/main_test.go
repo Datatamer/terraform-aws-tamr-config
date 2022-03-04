@@ -76,18 +76,13 @@ func TestAllCases(t *testing.T) {
 
 			test_structure.RunTestStage(t, "pick_new_randoms", func() {
 
-				usRegions := []string{"us-east-1", "us-east-2", "us-west-1", "us-west-2"}
+				usRegions := []string{"us-east-1", "us-east-1", "us-west-1", "us-west-2"}
 				// This function will first check for the Env Var TERRATEST_REGION and return its value if it is set.
 				awsRegion := aws.GetRandomStableRegion(t, usRegions, nil)
 
 				test_structure.SaveString(t, tempTestFolder, "region", awsRegion)
 				// some resources require a lowercase alphabet as first char
 				test_structure.SaveString(t, tempTestFolder, "unique_id", fmt.Sprintf("a%s", strings.ToLower(random.UniqueId())))
-			})
-
-			defer test_structure.RunTestStage(t, "teardown", func() {
-				teraformOptions := test_structure.LoadTerraformOptions(t, tempTestFolder)
-				terraform.Destroy(t, teraformOptions)
 			})
 
 			test_structure.RunTestStage(t, "setup_options", func() {
@@ -100,7 +95,7 @@ func TestAllCases(t *testing.T) {
 					TerraformDir: tempTestFolder,
 					Vars:         testCase.vars,
 					EnvVars: map[string]string{
-						"AWS_DEFAULT_REGION": awsRegion,
+						"AWS_REGION": awsRegion,
 					},
 				})
 
@@ -120,10 +115,17 @@ func TestAllCases(t *testing.T) {
 
 			})
 
+			defer test_structure.RunTestStage(t, "teardown", func() {
+				teraformOptions := test_structure.LoadTerraformOptions(t, tempTestFolder)
+				terraform.Destroy(t, teraformOptions)
+			})
+
 			test_structure.RunTestStage(t, "validate", func() {
 				terraformOptions := test_structure.LoadTerraformOptions(t, tempTestFolder)
-
 				rendered := terraform.Output(t, terraformOptions, "tamr-config")
+				validateModuleOutputs(t,
+					terraformOptions,
+				)
 
 				t.Run("validate_output_exists", func(t *testing.T) {
 					require.NotNil(t, rendered)
