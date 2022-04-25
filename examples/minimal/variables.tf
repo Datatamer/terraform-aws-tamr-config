@@ -26,6 +26,12 @@ variable "license_key" {
   description = "Tamr license key"
 }
 
+variable "skip_final_rds_snapshot" {
+  type        = bool
+  description = "Skip final snapshot"
+  default     = false
+}
+
 variable "vpc_id" {
   type        = string
   description = "VPC ID of deployment"

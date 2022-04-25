@@ -2,18 +2,20 @@ module "examples_minimal" {
   #   source = "git::git@github.com:Datatamer/terraform-aws-tamr-config?ref=2.0.0"
   source = "../../examples/minimal"
 
-  name_prefix           = var.name_prefix
-  ingress_cidr_blocks   = var.ingress_cidr_blocks
-  egress_cidr_blocks    = var.egress_cidr_blocks
-  license_key           = var.license_key
-  ami_id                = var.ami_id
-  vpc_id                = module.vpc.vpc_id
-  tags                  = var.tags
-  emr_tags              = var.emr_tags
-  emr_abac_valid_tags   = var.emr_abac_valid_tags
-  compute_subnet_id     = module.vpc.compute_subnet_id
-  data_subnet_ids       = module.vpc.data_subnet_ids
-  application_subnet_id = module.vpc.application_subnet_id
+  name_prefix             = var.name_prefix
+  ingress_cidr_blocks     = var.ingress_cidr_blocks
+  egress_cidr_blocks      = var.egress_cidr_blocks
+  license_key             = var.license_key
+  ami_id                  = var.ami_id
+  vpc_id                  = module.vpc.vpc_id
+  tags                    = var.tags
+  emr_tags                = var.emr_tags
+  emr_abac_valid_tags     = var.emr_abac_valid_tags
+  compute_subnet_id       = module.vpc.compute_subnet_id
+  data_subnet_ids         = module.vpc.data_subnet_ids
+  application_subnet_id   = module.vpc.application_subnet_id
+  skip_final_rds_snapshot = true
+
 }
 
 module "vpc" {

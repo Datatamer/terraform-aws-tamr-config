@@ -9,11 +9,12 @@ module "tamr-config" {
     "TAMR_LICENSE_KEY" : "TAMR_LICENSE_KEY_VALUE"
   }
 
-  rds_pg_hostname = "${var.name_prefix}_rds_pg_hostname"
-  rds_pg_dbname   = "rds_pg_dbname"
-  rds_pg_username = "rds_pg_username"
-  rds_pg_password = random_password.rds-password.result
-  rds_pg_db_port  = 123 // module.rds-postgres.rds_db_port
+  rds_pg_hostname         = "${var.name_prefix}_rds_pg_hostname"
+  rds_pg_dbname           = "rds_pg_dbname"
+  rds_pg_username         = "rds_pg_username"
+  rds_pg_password         = random_password.rds-password.result
+  rds_pg_db_port          = 123 // module.rds-postgres.rds_db_port
+  skip_final_rds_snapshot = true
 
   hbase_namespace   = "tamr"
   tamr_data_bucket  = "tamr_data_bucket"
