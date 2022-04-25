@@ -16,6 +16,13 @@ variable "availability_zones" {
   default     = []
 }
 
+
+variable "skip_final_rds_snapshot" {
+  type        = bool
+  description = "Skip final snapshot"
+  default     = false
+}
+
 variable "egress_cidr_blocks" {
   type        = list(string)
   description = "List of CIDR blocks from which ingress to ElasticSearch domain, Tamr VM, Tamr Postgres instance are allowed (i.e. VPN CIDR)"

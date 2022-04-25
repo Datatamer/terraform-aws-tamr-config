@@ -16,6 +16,12 @@ variable "ingress_cidr_blocks" {
   default     = []
 }
 
+variable "skip_final_rds_snapshot" {
+  type        = bool
+  description = "Skip final snapshot"
+  default     = false
+}
+
 variable "ami_id" {
   type        = string
   description = "AMI to use for Tamr EC2 instance"
