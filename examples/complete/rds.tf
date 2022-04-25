@@ -14,7 +14,7 @@ module "rds-postgres" {
   subnet_group_name    = "${var.name_prefix}-subnet-group"
   postgres_name        = "tamr0"
   parameter_group_name = "${var.name_prefix}-rds-postgres-pg"
-
+  skip_final_snapshot  = var.skip_final_rds_snapshot
   vpc_id = module.vpc.vpc_id
   # Network requirement: DB subnet group needs a subnet in at least two AZs
   rds_subnet_ids = module.vpc.data_subnet_ids
