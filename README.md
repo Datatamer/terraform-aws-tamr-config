@@ -16,7 +16,7 @@ This module creates:
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.15 |
+| terraform | = 0.15.4 |
 | aws | >= 3.36.0 |
 
 ## Providers
