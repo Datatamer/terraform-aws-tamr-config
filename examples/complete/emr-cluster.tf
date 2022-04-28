@@ -21,7 +21,7 @@ module "emr" {
   emr_managed_master_sg_ids = [aws_security_group.aws-emr-sg-master.id]
   emr_managed_core_sg_ids   = [aws_security_group.aws-emr-sg-core.id]
   emr_service_access_sg_ids = [aws_security_group.aws-emr-sg-service-access.id]
-  
+
   # External resource references
   bucket_name_for_root_directory = module.s3-data.bucket_name
   bucket_name_for_logs           = module.s3-logs.bucket_name
