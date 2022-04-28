@@ -71,7 +71,7 @@ variable "create_new_service_role" {
 }
 
 variable "master_ingress_rules" {
-  type = map(map(any))
+  type        = map(map(any))
   description = "Required ports for the EMR master security group."
   default = {
     0  = { from = 8443, to = 8443, proto = "tcp" }
@@ -93,7 +93,7 @@ variable "master_ingress_rules" {
 }
 
 variable "standard_egress_rules" {
-  type = map(map(any))
+  type        = map(map(any))
   description = "Required standard egress traffic."
   default = {
     0 = { from = 0, to = 65535, proto = "all" }
@@ -102,7 +102,7 @@ variable "standard_egress_rules" {
 }
 
 variable "core_ingress_rules" {
-  type = map(map(any))
+  type        = map(map(any))
   description = "Required ports for the EMR core security group."
   default = {
     0 = { from = 8042, to = 8042, proto = "tcp" }
@@ -114,7 +114,7 @@ variable "core_ingress_rules" {
 }
 
 variable "rds_ingress_rules" {
-  type = map(map(any))
+  type        = map(map(any))
   description = "Required ports for the EMR RDS security group."
   default = {
     0 = { from = 5432, to = 5432, proto = "tcp" }
@@ -122,7 +122,7 @@ variable "rds_ingress_rules" {
 }
 
 variable "es_ingress_rules" {
-  type = map(map(any))
+  type        = map(map(any))
   description = "Required ports for the ElasticSearch security group."
   default = {
     0 = { from = 80, to = 80, proto = "tcp" }
