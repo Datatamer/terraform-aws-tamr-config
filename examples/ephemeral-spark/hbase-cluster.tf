@@ -1,3 +1,10 @@
+#################################################################################################################
+# This version has been patched to allow the use of terraform version 0.13.7, if you are using a newer
+# version we suggest going to the next major release.
+# This version is creating security groups using resource blocks instead of modules.
+# Internal ticket for reference is CA-214.
+#################################################################################################################
+
 locals {
   applications = ["Hbase", "Ganglia"]
 }
@@ -67,7 +74,7 @@ resource "aws_security_group" "aws-emr-sg-master" {
   vpc_id      = var.vpc_id
 }
 
-resource "aws_security_group_rule" "master_ingress_rules" {
+resource "aws_security_group_rule" "master_ingress_rules_app" {
   for_each                 = var.master_ingress_rules
   type                     = "ingress"
   from_port                = each.value.from
@@ -77,6 +84,18 @@ resource "aws_security_group_rule" "master_ingress_rules" {
   source_security_group_id = module.aws-sg-vm.security_group_ids[0]
   security_group_id        = aws_security_group.aws-emr-sg-master.id
 }
+
+resource "aws_security_group_rule" "master_ingress_rules_spark" {
+  for_each                 = var.master_ingress_rules
+  type                     = "ingress"
+  from_port                = each.value.from
+  to_port                  = each.value.to
+  protocol                 = each.value.proto
+  description              = format("Tamr ingress SG rule %s for port %s", each.key, each.value.from)
+  source_security_group_id = module.ephemeral-spark-sgs.emr_managed_sg_id
+  security_group_id        = aws_security_group.aws-emr-sg-master.id
+}
+
 
 resource "aws_security_group_rule" "master_egress_rules" {
   for_each          = var.standard_egress_rules
@@ -97,7 +116,7 @@ resource "aws_security_group" "aws-emr-sg-core" {
   vpc_id      = var.vpc_id
 }
 
-resource "aws_security_group_rule" "core_ingress_rules" {
+resource "aws_security_group_rule" "core_ingress_rules_app" {
   for_each                 = var.core_ingress_rules
   type                     = "ingress"
   from_port                = each.value.from
@@ -105,6 +124,17 @@ resource "aws_security_group_rule" "core_ingress_rules" {
   protocol                 = each.value.proto
   description              = format("Tamr ingress SG rule %s for port %s", each.key, each.value.from)
   source_security_group_id = module.aws-sg-vm.security_group_ids[0]
+  security_group_id        = aws_security_group.aws-emr-sg-core.id
+}
+
+resource "aws_security_group_rule" "core_ingress_rules_spark" {
+  for_each                 = var.core_ingress_rules
+  type                     = "ingress"
+  from_port                = each.value.from
+  to_port                  = each.value.to
+  protocol                 = each.value.proto
+  description              = format("Tamr ingress SG rule %s for port %s", each.key, each.value.from)
+  source_security_group_id = module.ephemeral-spark-sgs.emr_managed_sg_id
   security_group_id        = aws_security_group.aws-emr-sg-core.id
 }
 

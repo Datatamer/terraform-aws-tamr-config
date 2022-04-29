@@ -80,21 +80,17 @@ variable "master_ingress_rules" {
   type        = map(map(any))
   description = "Required ports for the EMR master security group."
   default = {
-    0  = { from = 8443, to = 8443, proto = "tcp" }
-    1  = { from = 20888, to = 20888, proto = "tcp" }
-    2  = { from = 8088, to = 8088, proto = "tcp" }
+    0  = { from = 16000, to = 16000, proto = "tcp" }
+    1  = { from = 16010, to = 16010, proto = "tcp" }
+    2  = { from = 2181, to = 2181, proto = "tcp" }
     3  = { from = 50070, to = 50070, proto = "tcp" }
-    4  = { from = 16010, to = 16010, proto = "tcp" }
-    5  = { from = 9090, to = 9090, proto = "tcp" }
+    4  = { from = 80, to = 80, proto = "tcp" }
+    5  = { from = 8020, to = 8020, proto = "tcp" }
     6  = { from = 8070, to = 8070, proto = "tcp" }
-    7  = { from = 18080, to = 18080, proto = "tcp" }
-    8  = { from = 80, to = 80, proto = "tcp" }
-    9  = { from = 8020, to = 8020, proto = "tcp" }
-    10 = { from = 16000, to = 16000, proto = "tcp" }
-    11 = { from = 2181, to = 2181, proto = "tcp" }
-    12 = { from = 19888, to = 19888, proto = "tcp" }
-    13 = { from = 9095, to = 9095, proto = "tcp" }
-    14 = { from = 8085, to = 8085, proto = "tcp" }
+    7  = { from = 8085, to = 8085, proto = "tcp" }
+    8  = { from = 8443, to = 8443, proto = "tcp" }
+    9  = { from = 9090, to = 9090, proto = "tcp" }
+    10 = { from = 9095, to = 9095, proto = "tcp" }
   }
 }
 
@@ -111,11 +107,10 @@ variable "core_ingress_rules" {
   type        = map(map(any))
   description = "Required ports for the EMR core security group."
   default = {
-    0 = { from = 8042, to = 8042, proto = "tcp" }
-    1 = { from = 16020, to = 16020, proto = "tcp" }
+    0 = { from = 16020, to = 16020, proto = "tcp" }
+    1 = { from = 16030, to = 16030, proto = "tcp" }
     2 = { from = 50075, to = 50075, proto = "tcp" }
-    3 = { from = 16030, to = 16030, proto = "tcp" }
-    4 = { from = 50010, to = 50010, proto = "tcp" }
+    3 = { from = 50010, to = 50010, proto = "tcp" }
   }
 }
 

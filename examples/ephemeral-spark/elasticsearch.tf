@@ -1,3 +1,10 @@
+#################################################################################################################
+# This version has been patched to allow the use of terraform version 0.13.7, if you are using a newer
+# version we suggest going to the next major release.
+# This version is creating security groups using resource blocks instead of modules.
+# Internal ticket for reference is CA-214.
+#################################################################################################################
+
 module "tamr-es-cluster" {
   source = "git::git@github.com:Datatamer/terraform-aws-es?ref=3.1.0"
 
@@ -48,14 +55,14 @@ resource "aws_security_group_rule" "es_ingress_rules_app_source" {
   security_group_id        = aws_security_group.aws-es.id
 }
 
-resource "aws_security_group_rule" "es_ingress_rules_emr_source" {
+resource "aws_security_group_rule" "es_ingress_rules_spark_source" {
   for_each                 = var.es_ingress_rules
   type                     = "ingress"
   from_port                = each.value.from
   to_port                  = each.value.to
   protocol                 = each.value.proto
   description              = format("Tamr egress SG rule %s for port %s", each.key, each.value.from)
-  source_security_group_id = module.emr.emr_managed_sg_id
+  source_security_group_id = module.ephemeral-spark-sgs.emr_managed_sg_id
   security_group_id        = aws_security_group.aws-es.id
 }
 

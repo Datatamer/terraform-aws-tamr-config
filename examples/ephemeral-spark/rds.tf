@@ -1,3 +1,10 @@
+#################################################################################################################
+# This version has been patched to allow the use of terraform version 0.13.7, if you are using a newer
+# version we suggest going to the next major release.
+# This version is creating security groups using resource blocks instead of modules.
+# Internal ticket for reference is CA-214.
+#################################################################################################################
+
 # Generate random password for db
 resource "random_password" "rds-password" {
   length  = 16
@@ -25,6 +32,13 @@ module "rds-postgres" {
 
 module "sg-ports-rds" {
   source = "git::git@github.com:Datatamer/terraform-aws-rds-postgres.git//modules/rds-postgres-ports?ref=3.1.0"
+}
+
+### Security group for RDS PostgreSQL database ###
+
+resource "aws_security_group" "rds-postgres-sg" {
+  name   = format("%s-%s", var.name_prefix, "-rds")
+  vpc_id = var.vpc_id
 }
 
 resource "aws_security_group_rule" "rds_ingress_rules" {
