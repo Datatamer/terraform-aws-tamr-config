@@ -31,7 +31,7 @@ module "sg-ports-rds" {
 
 resource "aws_security_group" "rds-postgres-sg" {
   name   = format("%s-%s", var.name_prefix, "-rds")
-  vpc_id = var.vpc_id
+  vpc_id = module.vpc.vpc_id
 }
 
 resource "aws_security_group_rule" "rds_ingress_rules" {

@@ -71,7 +71,7 @@ module "sg-ports-emr" {
 resource "aws_security_group" "aws-emr-sg-master" {
   name        = format("%s-%s", var.name_prefix, "emr-master")
   description = "EMR Master security group for Tamr (CIDR)"
-  vpc_id      = var.vpc_id
+  vpc_id      = module.vpc.vpc_id
 }
 
 resource "aws_security_group_rule" "master_ingress_rules" {
@@ -101,7 +101,7 @@ resource "aws_security_group_rule" "master_egress_rules" {
 resource "aws_security_group" "aws-emr-sg-core" {
   name        = format("%s-%s", var.name_prefix, "emr-core")
   description = "EMR Core security group for Tamr (CIDR)"
-  vpc_id      = var.vpc_id
+  vpc_id      = module.vpc.vpc_id
 }
 
 resource "aws_security_group_rule" "core_ingress_rules" {
@@ -131,7 +131,7 @@ resource "aws_security_group_rule" "core_egress_rules" {
 resource "aws_security_group" "aws-emr-sg-service-access" {
   name        = format("%s-%s", var.name_prefix, "emr-service-access")
   description = "EMR Service Access security group for Tamr (CIDR)"
-  vpc_id      = var.vpc_id
+  vpc_id      = module.vpc.vpc_id
 }
 
 resource "aws_security_group_rule" "service_access_egress_rules" {

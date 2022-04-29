@@ -28,7 +28,7 @@ module "sg-ports-es" {
 resource "aws_security_group" "aws-es" {
   name        = format("%s-%s", var.name_prefix, "es")
   description = "ES security group for Tamr (CIDR)"
-  vpc_id      = var.vpc_id
+  vpc_id      = module.vpc.vpc_id
 }
 
 resource "aws_security_group_rule" "es_ingress_rules_app_source" {
