@@ -1,3 +1,10 @@
+#################################################################################################################
+# This version has been patched to allow the use of terraform version 0.13.7, if you are using a newer
+# version we suggest going to the next major release.
+# This version is creating security groups using resource blocks instead of modules.
+# Internal ticket for reference is CA-214.
+#################################################################################################################
+
 This example demonstrates a terraform-generated Tamr config for a full aws-scale out environment set up for ephemeral Spark clusters. The environment consists of:
 - static EMR deployment running HBase
 - EMR deployment setting up infra for ephemeral Spark cluster
