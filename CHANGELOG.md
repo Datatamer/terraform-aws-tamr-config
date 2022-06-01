@@ -1,5 +1,8 @@
 # AWS Tamr Config Repo
 
+## v2.4.3 - June 1st 2022
+* Enable NatGateway on complete example for multi-region support.
+* Added availability zones filters on datasources for complete example.
 ## v2.4.2 - May 16th 2022
 * Adds compatibility for tamr version v2022.002, which requires EMR 6 for hbase.
 
