@@ -13,7 +13,7 @@ data "aws_ami" "tamr-vm" {
 }
 
 module "tamr-vm" {
-  source = "git::git@github.com:Datatamer/terraform-aws-tamr-vm.git?ref=4.4.0"
+  source = "git::git@github.com:Datatamer/terraform-aws-tamr-vm.git?ref=4.4.2"
 
   ami                         = local.ami_id
   instance_type               = "r5.2xlarge"
