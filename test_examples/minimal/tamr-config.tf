@@ -1,6 +1,3 @@
-locals {
-  azs = length(var.availability_zones) > 0 ? var.availability_zones : slice(data.aws_availability_zones.available.names, 0, 2)
-}
 module "examples_minimal" {
   #   source = "git::git@github.com:Datatamer/terraform-aws-tamr-config?ref=2.0.0"
   source = "../../examples/minimal"
@@ -27,7 +24,7 @@ module "vpc" {
   data_subnet_cidr_blocks       = ["172.31.2.0/24", "172.31.3.0/24"]
   application_subnet_cidr_block = "172.31.4.0/24"
   compute_subnet_cidr_block     = "172.31.5.0/24"
-  availability_zones            = local.azs
+  availability_zones            = [for i in ["a", "b"] : "${data.aws_region.current.name}${i}"]
   create_public_subnets         = false
   create_load_balancing_subnets = false
   enable_nat_gateway            = false
@@ -37,14 +34,5 @@ module "vpc" {
     "Terraform" : "true"
   }
 }
-
-data "aws_availability_zones" "available" {
-  state = "available"
-  filter {
-    name   = "opt-in-status"
-    values = ["opt-in-not-required"]
-  }
-}
-
 
 data "aws_region" "current" {}
