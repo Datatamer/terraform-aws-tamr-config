@@ -1,5 +1,5 @@
 locals {
-  applications = ["Hbase", "Ganglia"]
+  applications = ["Hbase", "Ganglia", "Hadoop"]
 }
 # EMR Static HBase cluster
 module "emr-hbase" {
@@ -7,7 +7,7 @@ module "emr-hbase" {
 
   # Configurations
   create_static_cluster = true
-  release_label         = "emr-5.29.0" # hbase 1.4.10
+  release_label         = "emr-6.6.0" # hbase 2.4.4
   applications          = local.applications
   emr_config_file_path  = "${path.module}/emr.json"
   bucket_path_to_logs   = "logs/${var.name_prefix}-hbase"
@@ -45,17 +45,15 @@ module "emr-hbase" {
   # Scale
   master_instance_on_demand_count = 1
   core_instance_on_demand_count   = 4
-  # core_instance_spot_count    = 4
-  # core_bid_price_as_percentage_of_on_demand_price = 100
-  master_instance_type = "m4.large"
-  core_instance_type   = "r5.xlarge"
+  master_instance_type = "m6g.xlarge"
+  core_instance_type   = "r6g.xlarge"
   master_ebs_size      = 50
   core_ebs_size        = 200
 }
 
 module "sg-ports-emr" {
-  source = "git::git@github.com:Datatamer/terraform-aws-emr.git//modules/aws-emr-ports?ref=7.3.0"
-
+  source       = "git::git@github.com:Datatamer/terraform-aws-emr.git//modules/aws-emr-ports?ref=7.3.0"
+  is_pre_6x    = false
   applications = local.applications
 }
 

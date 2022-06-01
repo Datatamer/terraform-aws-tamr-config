@@ -1,5 +1,8 @@
 # AWS Tamr Config Repo
 
+## v2.4.2 - May 16th 2022
+* Adds compatibility for tamr version v2022.002, which requires EMR 6 for hbase.
+
 ## v2.4.1 - April 27th 2022
 * Adds "examples/tf13-compatible" directory which hosts examples to allow the use of terraform version 0.13.7
 
