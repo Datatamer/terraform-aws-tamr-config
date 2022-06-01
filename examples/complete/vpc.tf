@@ -4,13 +4,17 @@ locals {
 
 data "aws_availability_zones" "available" {
   state = "available"
+  filter {
+    name   = "opt-in-status"
+    values = ["opt-in-not-required"]
+  }
 }
 
 # Get current Region
 data "aws_region" "current" {}
 
 module "vpc" {
-  source             = "git::https://github.com/Datatamer/terraform-aws-networking.git?ref=1.1.1"
+  source             = "git::https://github.com/Datatamer/terraform-aws-networking.git?ref=1.1.2"
   availability_zones = local.azs
   name_prefix        = var.name_prefix
   tags               = merge(var.tags, var.emr_tags)
@@ -24,7 +28,7 @@ module "vpc" {
   public_subnets_cidr_blocks         = var.public_subnets_cidr_blocks
   # Create subnets flag
   create_public_subnets         = true
-  enable_nat_gateway            = false
+  enable_nat_gateway            = true
   create_load_balancing_subnets = true
   # Allowed security group for accepting ingress traffic to the EMR Interface Endpoint
   interface_endpoint_ingress_sg = module.aws-sg-vm.security_group_ids[0]
