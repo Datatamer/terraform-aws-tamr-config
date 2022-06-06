@@ -28,7 +28,7 @@ module "vpc" {
   public_subnets_cidr_blocks         = var.public_subnets_cidr_blocks
   # Create subnets flag
   create_public_subnets         = true
-  enable_nat_gateway            = true
+  enable_nat_gateway            = false
   create_load_balancing_subnets = true
   # Allowed security group for accepting ingress traffic to the EMR Interface Endpoint
   interface_endpoint_ingress_sg = module.aws-sg-vm.security_group_ids[0]

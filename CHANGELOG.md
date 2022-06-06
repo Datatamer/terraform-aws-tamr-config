@@ -1,5 +1,9 @@
 # AWS Tamr Config Repo
 
+## v2.4.4 - June 6th 2022
+* Changed EMR bootstrap action.
+* Disable NatGateway as default value on complete example.
+
 ## v2.4.3 - June 1st 2022
 * Enable NatGateway on complete example for multi-region support.
 * Added availability zones filters on datasources for complete example.

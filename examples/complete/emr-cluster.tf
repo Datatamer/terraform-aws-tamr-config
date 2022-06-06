@@ -31,10 +31,11 @@ module "emr" {
     "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
   ]
   bootstrap_actions = [
+    #Workaround for running scripts from an S3 bucket from outside of us-east-1 on the complete example.
     {
       name = "cw_agent_install",
-      path = "s3://${module.s3-data.bucket_name}/${aws_s3_bucket_object.sample_bootstrap_script.id}"
-      args = []
+      path = "file:///bin/bash"
+      args = ["-c","aws s3 cp s3://${module.s3-data.bucket_name}/${aws_s3_bucket_object.sample_bootstrap_script.id} ./script.sh; sudo bash ./script.sh"]
     }
   ]
   key_pair_name = module.emr_key_pair.key_pair_key_name
