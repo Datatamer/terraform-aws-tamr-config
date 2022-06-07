@@ -32,6 +32,8 @@ module "emr" {
   ]
   bootstrap_actions = [
     #Workaround for running scripts from an S3 bucket from outside of us-east-1 on the complete example.
+    #Issue: When using the s3 uri path, the EMR service is not beeing able to fetch the file on a private
+    #subnet setup without the natgateway enabled for regions different from us-east-1.
     {
       name = "cw_agent_install",
       path = "file:///bin/bash"
