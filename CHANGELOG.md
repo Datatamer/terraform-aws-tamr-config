@@ -1,5 +1,8 @@
 # AWS Tamr Config Repo
 
+## v2.4.4 - June 16th 2022
+* Allows `emr_service_access_sg_id` to make it visible in the render file.
+
 ## v2.4.3 - June 1st 2022
 * Enable NatGateway on complete example for multi-region support.
 * Added availability zones filters on datasources for complete example.

@@ -45,10 +45,10 @@ module "emr-hbase" {
   # Scale
   master_instance_on_demand_count = 1
   core_instance_on_demand_count   = 4
-  master_instance_type = "m6g.xlarge"
-  core_instance_type   = "r6g.xlarge"
-  master_ebs_size      = 50
-  core_ebs_size        = 200
+  master_instance_type            = "m6g.xlarge"
+  core_instance_type              = "r6g.xlarge"
+  master_ebs_size                 = 50
+  core_ebs_size                   = 200
 }
 
 module "sg-ports-emr" {
