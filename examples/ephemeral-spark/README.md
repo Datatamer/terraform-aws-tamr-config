@@ -45,6 +45,7 @@ No requirements.
 
 | Name | Description |
 |------|-------------|
+| aws-sg-vm | n/a |
 | ec2-key | n/a |
 | emr-hbase | n/a |
 | ephemeral-spark-iam | n/a |

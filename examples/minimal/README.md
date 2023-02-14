@@ -41,6 +41,7 @@ No requirements.
 
 | Name | Description |
 |------|-------------|
+| aws-sg-vm | n/a |
 | ec2-key | n/a |
 | elasticsearch | n/a |
 | emr | n/a |

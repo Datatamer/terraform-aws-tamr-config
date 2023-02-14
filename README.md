@@ -53,6 +53,7 @@ This module creates:
 | emr\_managed\_master\_sg\_id | Security group ID of the EMR Managed Master Security Group. | `string` | `""` | no |
 | emr\_release\_label | The release label for the Amazon EMR release. | `string` | `"emr-5.29.0"` | no |
 | emr\_root\_volume\_size | The size, in GiB, of the EBS root device volume of the Linux AMI that is used for each EMR EC2 instance. | `string` | `"10"` | no |
+| emr\_security\_configuration | Security configuration to attach to created EMR Spark clusters. Supported in Tamr v2022.009.0 and later. | `string` | `""` | no |
 | emr\_service\_access\_sg\_id | Security group ID of EMR Service Access Security Group. | `string` | `""` | no |
 | emr\_service\_role\_name | Name of IAM service role for EMR cluster. | `string` | `""` | no |
 | emr\_subnet\_id | ID of the subnet where the EMR cluster will be created. | `string` | `""` | no |
