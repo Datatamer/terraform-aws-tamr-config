@@ -60,3 +60,6 @@ TAMR_BACKUP_EMR_CLUSTER_ID: ${tamr_backup_emr_cluster_id}
 # DMS Config
 APPS_DMS_ENABLED: ${apps_dms_enabled}
 APPS_DMS_DEFAULT_CLOUD_PROVIDER: ${apps_dms_default_cloud_provider}
+
+# Core Connect
+TAMR_CONNECT_DEFAULT_CLOUD_PROVIDER: S3
