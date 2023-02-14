@@ -1,5 +1,8 @@
 # AWS Tamr Config Repo
 
+## v2.7.0 - February  14th 2023
+* Sets default Core Connect provider to `S3` in `tamr-config.yml`
+
 ## v2.6.0 - September 14th 2022
 * Adds variable `emr_security_configuration` that is passed to the config `TAMR_DATASET_EMR_SECURITY_CONFIGURATION`
 
